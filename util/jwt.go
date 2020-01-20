@@ -1,12 +1,13 @@
 package util
 
 import (
-	"admin-api/pkg/setting"
 	jwt "github.com/dgrijalva/jwt-go"
 	"time"
 )
 
-var jwtSecret = []byte(setting.JwtSecret)
+var jwtKey = "tools"
+
+var jwtSecret = []byte(jwtKey)
 
 type Claims struct {
 	Email    string `json:"email"`
@@ -23,7 +24,7 @@ func GenerateToken(email, password string) (string, error) {
 		password,
 		jwt.StandardClaims{
 			ExpiresAt: expireTime.Unix(),
-			Issuer:    "admin-api",
+			Issuer:    "tools",
 		},
 	}
 
