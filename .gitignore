@@ -1,0 +1,13 @@
+.buildpath
+.settings/
+.project
+*.patch
+.git/
+.idea
+*.deb
+script/http
+bin
+
+*.lock
+.DS_Store
+runtime/*
