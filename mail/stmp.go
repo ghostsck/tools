@@ -1,16 +1,26 @@
 package mail
 
 import (
-	"tools/setting"
 	"fmt"
 	"gopkg.in/gomail.v2"
 )
+
+var (
+	fromAddress string
+	fromName    string
+	fromHost    string
+	fromPort    int
+	fromUname   string
+	fromPasswd  string
+)
+
 
 type Email struct {
 	to      string "to"
 	subject string "subject"
 	body    string "msg"
 }
+
 
 func NewEmail(to, subject, body string) *Email {
 	return &Email{
@@ -25,7 +35,7 @@ func (email *Email) Send() (bool, error) {
 	m := gomail.NewMessage()
 
 	// 发件人
-	m.SetAddressHeader("From", setting.MAIL_FROM_ADDRESS, setting.MAIL_FROM_NAME)
+	m.SetAddressHeader("From", fromAddress, fromName)
 
 	// 收件人
 	m.SetHeader("To", m.FormatAddress(email.to, email.to))
@@ -43,7 +53,7 @@ func (email *Email) Send() (bool, error) {
 	//m.Attach("我是附件")
 
 	// 发送邮件服务器、端口、发件人账号、发件人密码
-	d := gomail.NewDialer(setting.MAIL_HOST, setting.MAIL_PORT, setting.MAIL_USERNAME, setting.MAIL_PASSWORD)
+	d := gomail.NewDialer(fromHost, fromPort, fromUname, fromPasswd)
 
 	if err := d.DialAndSend(m); err != nil {
 		fmt.Println("发送失败", err)
