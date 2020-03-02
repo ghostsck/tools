@@ -5,7 +5,7 @@ import (
 	//"time"
 	"fmt"
 	"log"
-	"github.com/ghostsck/tools/util"
+	"tools/util"
 )
 
 var (

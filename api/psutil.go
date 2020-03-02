@@ -5,7 +5,7 @@ import (
 	"fmt"
 	"log"
 	"net/http"
-	"github.com/ghostsck/tools/monitor"
+	"tools/monitor"
 )
 
 func main() {

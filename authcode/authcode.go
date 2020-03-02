@@ -8,7 +8,7 @@ import (
 	"strconv"
 	"strings"
 	"time"
-	"github.com/ghostsck/tools/authcode/md5"
+	"tools/authcode/md5"
 )
 
 func init() {
